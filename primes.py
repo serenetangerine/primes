@@ -8,16 +8,14 @@ startTime = datetime.now()
 
 # import primes.txt into primes[] list
 try:
-    file = open('primes.txt', 'r')
-    primes = file.readlines()
-    file.close()
+    with open('primes.txt', 'r') as file:
+        primes = file.readlines()
 except:
     # initialize primes.txt and primes[] list
     primes = [2, 3]
-    file = open('primes.txt', 'a+')
-    for prime in primes:
-        file.write(str(prime) + '\n')
-    file.close()
+    with open('primes.txt', 'a+') as file
+        for prime in primes:
+            file.write(str(prime) + '\n')
 
 # main loop
 # initialize test number as last prime + 2
