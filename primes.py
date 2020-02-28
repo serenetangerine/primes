@@ -13,7 +13,7 @@ try:
 except:
     # initialize primes.txt and primes[] list
     primes = [2, 3]
-    with open('primes.txt', 'a+') as file
+    with open('primes.txt', 'a+') as file:
         for prime in primes:
             file.write(str(prime) + '\n')
 
