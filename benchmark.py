@@ -34,6 +34,8 @@ try:
 except KeyboardInterrupt:
     elapsedTime = datetime.now() - startTime
     print('\n\nScript ran for %s and found %s primes.' % (str(elapsedTime), str(count)))
+    input()
 
 elapsedTime = datetime.now() - startTime
 print('\n\nScript ran for %s and found %s primes.' % (str(elapsedTime), str(count)))
+input()
