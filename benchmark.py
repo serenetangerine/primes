@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-## generates prime numbers and saves primes to primes.txt
-## will read primes.txt at run and pick up where the script
-## last left off
+## generates the first 100,000 prime numbers and returns script
+## run time when complete
 
 from math import sqrt
 from datetime import datetime
@@ -10,26 +9,15 @@ from datetime import datetime
 # initialize time to show elapsed time when quit
 startTime = datetime.now()
 
-# import primes.txt into primes[] list
-try:
-    with open('primes.txt', 'r') as file:
-        primes = file.readlines()
-except:
-    # initialize primes.txt and primes[] list
-    primes = [2, 3]
-    with open('primes.txt', 'a+') as file:
-        for prime in primes:
-            file.write(str(prime) + '\n')
-
 # main loop
 # initialize test number as last prime + 2
-n = int(primes[-1]) + 2
-count = 0
+primes = [2, 3]
+n = primes[-1] + 2
+count = 2
 try:
-    while True:
+    while count < 100000:
         # check divisibility of n by all primes < sqrt(n)
         for prime in primes:
-            prime = int(prime)
             if prime <= sqrt(float(n)):
                 if n % prime == 0:
                     # n is not prime
@@ -40,11 +28,12 @@ try:
                 # the square root of n (relatively easy to prove)
                 print(str(n))
                 primes.append(n)
-                with open('primes.txt', 'a') as file:
-                    file.write(str(n) + '\n')
                 n = n + 2
                 count = count + 1
                 break
 except KeyboardInterrupt:
     elapsedTime = datetime.now() - startTime
     print('\n\nScript ran for %s and found %s primes.' % (str(elapsedTime), str(count)))
+
+elapsedTime = datetime.now() - startTime
+print('\n\nScript ran for %s and found %s primes.' % (str(elapsedTime), str(count)))
